@@ -2,7 +2,7 @@ import { hopeTheme } from "vuepress-theme-hope";
 
 import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
-
+_redirects
 export default hopeTheme({
   hostname: "https://sleepy.siiway.top",
 
