@@ -11,8 +11,6 @@ export default defineUserConfig({
 
   head: [['link', { rel: 'icon', href: 'https://ghsrc.wyf9.top/icons/sleepy_icon_nobg.png' }]],
 
-  public: "public",
-
   theme,
 
 });
