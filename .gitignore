@@ -1,0 +1,7 @@
+# NodeJS
+node_modules/
+
+# VuePress
+.vuepress/.cache/
+.vuepress/.temp/
+.vuepress/dist/

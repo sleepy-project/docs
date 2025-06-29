@@ -1,0 +1,26 @@
+{
+  "name": "sleepy-docs",
+  "description": "Sleepy Project Docs Site",
+  "version": "0.0.0",
+  "license": "CC-BY-SA",
+  "type": "module",
+  "scripts": {
+    "build": "vuepress-vite build docs",
+    "clean-dev": "vuepress-vite dev docs --clean-cache",
+    "dev": "vuepress-vite dev docs",
+    "update-package": "pnpm dlx vp-update"
+  },
+  "devDependencies": {
+    "@vuepress/bundler-vite": "2.0.0-rc.23",
+    "@waline/client": "^3.5.7",
+    "sass-embedded": "^1.89.2",
+    "vue": "^3.5.16",
+    "vuepress": "2.0.0-rc.23",
+    "vuepress-theme-hope": "2.0.0-rc.93"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
