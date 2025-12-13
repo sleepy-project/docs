@@ -27,6 +27,9 @@ export default defineConfig({
     },
 
     socialLinks: [
+      { icon: "qq", link: "https://sleepy.wss.moe/qq" },
+      { icon: "telegram", link: "https://sleepy.wss.moe/tgc" },
+      { icon: "discord", link: "https://sleepy.wss.moe/dc" },
       { icon: "github", link: "https://github.com/sleepy-project" },
     ],
 
@@ -61,6 +64,8 @@ export default defineConfig({
         nav: [{ text: "Home", link: "/en_us/" }],
 
         socialLinks: [
+          { icon: "telegram", link: "https://sleepy.wss.moe/tgc" },
+          { icon: "discord", link: "https://sleepy.wss.moe/dc" },
           { icon: "github", link: "https://github.com/sleepy-project" },
         ],
 
