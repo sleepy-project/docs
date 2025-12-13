@@ -3,26 +3,26 @@
 layout: home
 
 hero:
-  name: "我的 Awesome 项目"
-  text: "一个 VitePress 站点"
-  tagline: 我的项目 tagline
+  name: Sleepy Project
+  tagline: 一个优雅的在线状态展示项目
+  image:
+    src: /favicon.png
+    alt: Sleepy Icon
   actions:
     - theme: brand
-      text: Markdown 示例
-      link: /markdown-examples
+      text: 文档 (v5)
+      link: /v5/
     - theme: alt
-      text: API 示例
-      link: /api-examples
+      text: GitHub
+      link: https://github.com/sleepy-project
 
 features:
-  - title: 功能 A
-    details: 示例示例示例示例示例示例示例示例示例示例示例示例示例
-  - title: 功能 B
-    details: 示例示例示例示例示例示例示例示例示例示例示例示例示例
-  - title: 功能 C
-    details: 示例示例示例示例示例示例示例示例示例示例示例示例示例
+  - title: 🕘 实时
+    details: 实时更新你的在线状态, 包括手动设置状态和设备打开应用
+  - title: 🌟 美观
+    details: 精美的状态展示页面和管理面板
+  - title: 🤗 开放
+    details: 提供开放的 API 接口和文档, 以及高度可扩展的插件系统
+  - title: 🔒 安全
+    details: 内置 HTTPS 支持, 无需 Nginx 等反代 (需自行提供 SSL 证书)
 ---
-
----
-
-<!--@include: ./README.md-->

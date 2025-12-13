@@ -3,26 +3,26 @@
 layout: home
 
 hero:
-  name: "My Awesome Project"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  name: Sleepy Project
+  tagline: Elegant online status display
+  image:
+    src: /favicon.png
+    alt: Sleepy Icon
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /en_us/markdown-examples
+      text: Docs (v5, Chinese-only)
+      link: /v5/
     - theme: alt
-      text: API Examples
-      link: /en_us/api-examples
+      text: GitHub
+      link: https://github.com/sleepy-project
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 🕘 Realtime
+    details: Real-time updates of your online status, including manual status & opened apps
+  - title: 🌟 Beautiful
+    details: Pretty-look status display page and management dashboard
+  - title: 🤗 Open
+    details: Open API Endpoints & Documentation & Plugin System
+  - title: 🔒 Secure
+    details: Built-in HTTPS Support (Needs to provide your own SSL certs)
 ---
-
----
-
-<!--@include: ../README.md-->

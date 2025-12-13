@@ -2,51 +2,36 @@ import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Vitepress 模板",
-  description: "一个 VitePress 站点",
+  title: "Sleepy Project",
+  titleTemplate: "Sleepy Docs",
+  description: "一个优雅的在线状态展示项目",
   base: "/",
   cleanUrls: true,
-  head: [
-    ["link", { rel: "icon", href: "https://icons.siiway.org/siiway/icon.svg" }],
-  ],
+  head: [["link", { rel: "icon", href: "/favicon.png" }]],
   lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [{ text: "主页", link: "/" }],
 
     sidebar: {
-      ["/"]: [
-        { text: "回到主页", link: "/" },
-        {
-          text: "示例文档",
-          items: [
-            { text: "Markdown 示例", link: "/markdown-examples" },
-            { text: "API 示例", link: "/api-examples" },
-          ],
-        },
-        { text: "外链示例", link: "https://not-exist.wss.moe/outlink-zh" },
+      ["/v5/"]: [
+        { text: "Sleepy v5", link: "/v5/" },
+        // needs more
+        { text: "GitHub", link: "https://github.com/sleepy-project" },
       ],
-      ["/en_us/"]: [
-        { text: "Back to homepage", link: "/en_us/" },
-        {
-          text: "Example docs",
-          items: [
-            { text: "Markdown Examples", link: "/en_us/markdown-examples" },
-            { text: "API Examples", link: "/en_us/api-examples" },
-          ],
-        },
-        { text: "Outlink Test", link: "https://not-exist.wss.moe/outlink-en" },
+      ["/en_us/v5/"]: [
+        { text: "Sleepy v5", link: "/v5/" },
+        // needs more
+        { text: "GitHub", link: "https://github.com/sleepy-project" },
       ],
     },
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/vuejs/vitepress" },
-      { icon: "qq", link: "https://not-exist.wss.moe/qq" },
-      { icon: "discord", link: "https://not-exist.wss.moe/discord" },
+      { icon: "github", link: "https://github.com/sleepy-project" },
     ],
 
     editLink: {
-      pattern: "https://github.com/wyf9/vitepress-template/edit/main/:path",
+      pattern: "https://github.com/sleepy-project/docs/edit/main/:path",
       text: "在 GitHub 上编辑本页",
     },
 
@@ -69,19 +54,18 @@ export default defineConfig({
       lang: "en",
       link: "/en_us/",
 
-      title: "Vitepress Template",
-      description: "A VitePress Site",
+      title: "Sleepy Project",
+      description: "Elegant online status display",
 
       themeConfig: {
         nav: [{ text: "Home", link: "/en_us/" }],
 
         socialLinks: [
-          { icon: "github", link: "https://github.com/vuejs/vitepress" },
-          { icon: "discord", link: "https://not-exist.wss.moe/discord" },
+          { icon: "github", link: "https://github.com/sleepy-project" },
         ],
 
         editLink: {
-          pattern: "https://github.com/wyf9/vitepress-template/edit/main/:path",
+          pattern: "https://github.com/sleepy-project/docs/edit/main/:path",
           text: "Edit this page on GitHub",
         },
 
