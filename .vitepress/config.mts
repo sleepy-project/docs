@@ -16,12 +16,44 @@ export default defineConfig({
     sidebar: {
       ["/v5/"]: [
         { text: "Sleepy v5", link: "/v5/" },
-        // needs more
+        {
+          text: "用户文档",
+          collapsed: false,
+          items: [
+            { text: "配置说明", link: "/v5/config" },
+            { text: "部署指南", link: "/v5/deploy" },
+            { text: "HTTPS配置", link: "/v5/https" },
+            { text: "更新指南", link: "/v5/update" },
+          ],
+        },
+        {
+          text: "开发者文档",
+          collapsed: false,
+          items: [
+            // 待添加
+          ],
+        },
         { text: "GitHub", link: "https://github.com/sleepy-project" },
       ],
       ["/en_us/v5/"]: [
-        { text: "Sleepy v5", link: "/v5/" },
-        // needs more
+        { text: "Sleepy v5", link: "/en_us/v5/" },
+        {
+          text: "User Documentation",
+          collapsed: false,
+          items: [
+            { text: "Configuration", link: "/en_us/v5/config" },
+            { text: "Deployment", link: "/en_us/v5/deploy" },
+            { text: "HTTPS Setup", link: "/en_us/v5/https" },
+            { text: "Update Guide", link: "/en_us/v5/update" },
+          ],
+        },
+        {
+          text: "Developer Documentation",
+          collapsed: false,
+          items: [
+            // 待添加
+          ],
+        },
         { text: "GitHub", link: "https://github.com/sleepy-project" },
       ],
     },
