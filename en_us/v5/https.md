@@ -1,9 +1,9 @@
 # HTTPS Configuration Guide
 
 > [!WARNING]
-> This document is 100% AI-generated. Accuracy is not guaranteed.
+> This document is 100% AI-generated. Accuracy of the following content is not guaranteed.
 
-This guide explains how to configure HTTPS for Sleepy to access your status page securely.
+This document explains how to configure HTTPS for Sleepy to access your status page through a secure connection.
 
 ## Why Use HTTPS?
 
@@ -33,7 +33,7 @@ sudo apt-get install certbot
 # Obtain certificate (standalone mode)
 sudo certbot certonly --standalone -d your-domain.com
 
-# Certificates will be saved in /etc/letsencrypt/live/your-domain.com/
+# Certificates will be saved in /etc/letsencrypt/live/your-domain.com/ directory
 ```
 
 #### Self-Signed Certificate (Testing Only)
@@ -45,7 +45,7 @@ For testing environments, you can create a self-signed certificate:
 openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
 ```
 
-Note: Self-signed certificates will cause browser security warnings and are not recommended for production use.
+Note: Self-signed certificates will cause browser security warnings and are not recommended for production environments.
 
 ### 2. Configure Sleepy to Use HTTPS
 
@@ -59,10 +59,10 @@ Edit `data/config.yaml`:
 
 ```yaml
 main:
-  https: true                # Enable HTTPS mode
-  ssl_cert: "data/cert.pem"  # Certificate file path
-  ssl_key: "data/key.pem"    # Key file path
-  port: 443                  # Recommended to set port to 443
+  https: true # Enable HTTPS mode
+  ssl_cert: "data/cert.pem" # Certificate file path
+  ssl_key: "data/key.pem" # Key file path
+  port: 443 # Recommended to set port to 443
 ```
 
 Or configure in `.env`:
@@ -76,7 +76,7 @@ sleepy_main_port = 443
 
 #### Option 2: Nginx Reverse Proxy (Recommended for Complex Production Environments)
 
-In this approach, Sleepy runs in HTTP mode (`https: false`), and Nginx handles SSL.
+In this approach, Sleepy continues to run in HTTP mode (`https: false`), and Nginx handles SSL.
 
 Nginx configuration example:
 
@@ -98,7 +98,7 @@ server {
 
 ### 3. Restart Sleepy Service
 
-After configuration, restart the service to apply changes:
+After configuration is complete, restart the service to apply changes:
 
 ```bash
 ./scripts/panel.sh restart
@@ -108,7 +108,7 @@ After configuration, restart the service to apply changes:
 
 ### Certificate Permission Issues
 
-If Sleepy fails to start with an error about being unable to read certificates, ensure the running user has permission:
+If Sleepy fails to start and reports an error about being unable to read certificates, ensure the running user has permissions:
 
 ```bash
 sudo chmod 644 /path/to/your/cert.pem
@@ -123,5 +123,4 @@ Sleepy will attempt to find `cert.pem` and `key.pem` in the `data/` directory by
 
 1. **Protect Private Keys**: Ensure `.key` files are not publicly accessible
 2. **Enable HSTS**: Add HSTS headers in reverse proxy to force browsers to use HTTPS
-3. **Regular Validity Checks**: Set up crontab for automatic renewal when using Let's Encrypt
-
+3. **Regular Validity Checks**: When using Let's Encrypt, it's recommended to set up crontab for automatic renewal
