@@ -51,7 +51,7 @@ export default defineConfig({
           text: "Developer Documentation",
           collapsed: false,
           items: [
-            // 待添加
+            // to be added
           ],
         },
         { text: "GitHub", link: "https://github.com/sleepy-project" },
