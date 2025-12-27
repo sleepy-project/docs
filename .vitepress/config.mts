@@ -20,8 +20,8 @@ export default defineConfig({
           text: "用户文档",
           collapsed: false,
           items: [
-            { text: "配置说明", link: "/v5/config" },
             { text: "部署指南", link: "/v5/deploy" },
+            { text: "配置说明", link: "/v5/config" },
             { text: "HTTPS配置", link: "/v5/https" },
             { text: "更新指南", link: "/v5/update" },
           ],
@@ -41,8 +41,8 @@ export default defineConfig({
           text: "User Documentation",
           collapsed: false,
           items: [
-            { text: "Configuration", link: "/en_us/v5/config" },
             { text: "Deployment", link: "/en_us/v5/deploy" },
+            { text: "Configuration", link: "/en_us/v5/config" },
             { text: "HTTPS Setup", link: "/en_us/v5/https" },
             { text: "Update Guide", link: "/en_us/v5/update" },
           ],
