@@ -7,8 +7,10 @@
 3. `data/config.toml` **(建议使用)**
 4. `data/config.json`
 
-> [!IMPORTANT] > _(特别是 Windows 用户)_ 请确保所有配置文件 **使用 `UTF-8` 编码保存**，否则会导致 **错误读入注释 / 中文乱码** 等异常情况 <br/>
-> Huggingface / Vercel 等容器平台部署需将环境变量放在 **`Environment Variables`** 中 _(见 [部署文档](./deploy.md))_ <br/> > _修改配置后需重启服务生效_
+> [!IMPORTANT]
+> _(特别是 Windows 用户)_ 请确保所有配置文件 **使用 `UTF-8` 编码保存**，否则会导致 **错误读入注释 / 中文乱码** 等异常情况 <br/>
+> Huggingface / Vercel 等容器平台部署需将环境变量放在 **`Environment Variables`** 中 _(见 [部署文档](./deploy))_ <br/>
+> _修改配置后需重启服务生效_
 
 ## 多种配置文件的格式转换
 

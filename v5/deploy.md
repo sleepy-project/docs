@@ -48,18 +48,20 @@ uv sync
 
 3. 编辑配置文件
 
-> _配置文件变化史_ <br/> > ~~`data.json`~~ <br/>
+> _配置文件变化史_ <br/>
+> ~~`data.json`~~ <br/>
 > -> ~~`config.json`~~ <br/>
 > -> ~~`config.jsonc`~~ <br/>
 > -> ~~环境变量 & `.env`~~ <br/>
 > -> ~~`config.yaml` & 环境变量 & `.env`~~ <br/>
 > -> **环境变量 & `data/.env` & `data/config.yaml` & `data/config.toml` & `data/config.json`**
 
-在 `data` 目录下新建上面几种配置文件中的**一种**，并**按照 [此处](./config.md) 的说明编辑配置**
+在 `data` 目录下新建上面几种配置文件中的**一种**，并**按照 [此处](./config) 的说明编辑配置**
 
 ### 启动
 
-> [!WARNING] > **使用宝塔面板 (uwsgi) 等部署时，请确定只为本程序分配了 1 个进程, 如设置多个服务进程可能导致数据不同步!!!**
+> [!WARNING]
+> **使用宝塔面板 (uwsgi) 等部署时，请确定只为本程序分配了 1 个进程, 如设置多个服务进程可能导致数据不同步!!!**
 
 有两种启动方式:
 
@@ -76,7 +78,10 @@ uv run main.py
 
 ## Huggingface 部署
 
-> 适合没有服务器部署的同学使用 <br/> > _~~有服务器也推荐，不怕被打~~_ <br/> > ~~唯一的缺点: 不能使用自定义域名~~ <br/> > **可用 Cloudflared Tunnel 方式使用自定义域名，见 [如何使用自定义域名](#如何使用自定义域名)**
+> 适合没有服务器部署的同学使用 <br/>
+> _~~有服务器也推荐，不怕被打~~_ <br/>
+> ~~唯一的缺点: 不能使用自定义域名~~ <br/>
+> **可用 Cloudflared Tunnel 方式使用自定义域名，见 [如何使用自定义域名](#如何使用自定义域名)**
 
 只需三步:
 
@@ -86,15 +91,18 @@ uv run main.py
 
 ![huggingface-5](https://ghimg.siiway.top/sleepy/deploy/huggingface-5.1.png)
 
-1. 在复制页面设置 secret 和页面信息等环境变量 **([配置说明](./config.md))**
+1. 在复制页面设置 secret 和页面信息等环境变量 **([配置说明](./config))**
 2. 点击部署，等待完成后点击右上角三点 -> `Embed this space`，即可获得你的部署地址 _(类似于: <https://wyf9-sleepy.hf.space>)_
 
-> [!IMPORTANT] > **在创建时请务必选择 Space 类型为公开 (`Public`)，否则无法获取部署地址 (他人无法访问)!** <br/> > _Hugging Face Space 如 48h 未访问将会休眠，建议使用定时请求平台 (如 `cron-job.org`, `Uptime Kuma` 等) 定时请求 `(你的部署地址)/none`_
+> [!IMPORTANT]
+> **在创建时请务必选择 Space 类型为公开 (`Public`)，否则无法获取部署地址 (他人无法访问)!** <br/>
+> _Hugging Face Space 如 48h 未访问将会休眠，建议使用定时请求平台 (如 `cron-job.org`, `Uptime Kuma` 等) 定时请求 `(你的部署地址)/none`_
 
 ### 卡在 Deploying?
 
 > [!TIP]
-> 适用于日志中程序已经启动, 但部署状态仍然为 `Deploying` 的情况 <br/> > _对所有的 Hugging Face 仓库都有效_
+> 适用于日志中程序已经启动, 但部署状态仍然为 `Deploying` 的情况 <br/>
+> _对所有的 Hugging Face 仓库都有效_
 
 <details>
 
@@ -108,7 +116,8 @@ uv run main.py
 
 ### 如何使用自定义域名
 
-> [!WARNING] > **_在 HF Space 中使用 Cloudflared 可能会被封号, 请自行承担风险._**
+> [!WARNING]
+> **_在 HF Space 中使用 Cloudflared 可能会被封号, 请自行承担风险._**
 
 1. 到 [Zero Trust Dashboard](https://one.dash.cloudflare.com/?to=/:account/networks/tunnels/add/cfd_tunnel) 创建一个 Tunnel
 
@@ -144,11 +153,13 @@ CMD bash cfd.sh
 
 4. 重新构建 Space (`Factory rebuild`) 即可
 
-> 定时请求仍然需要使用 Huggingface 提供的子域 <br/> > _详见: [Gist](https://gist.github.com/wyf9/71ff358636154ab00d90602c3c818763)_
+> 定时请求仍然需要使用 Huggingface 提供的子域 <br/>
+> _详见: [Gist](https://gist.github.com/wyf9/71ff358636154ab00d90602c3c818763)_
 
 ## Vercel 部署
 
-> 可以使用自定义域名，但**限制较多** (如无法使用 SSE, 请求数 / 请求完成时间有限制等) <br/> > _当前端检测到为 Vercel 部署时会回退到轮询方式更新_
+> 可以使用自定义域名，但**限制较多** (如无法使用 SSE, 请求数 / 请求完成时间有限制等) <br/>
+> _当前端检测到为 Vercel 部署时会回退到轮询方式更新_
 
 1. Fork 本项目
 2. 打开 [`vercel.com/new`](https://vercel.com/new)，并按照提示授权访问 GitHub _(如未注册则注册)_
@@ -156,7 +167,7 @@ CMD bash cfd.sh
 
 ![vercel-1](https://ghimg.siiway.top/sleepy/deploy/vercel-1.1.png)
 
-1. 在导入界面设置环境变量 (其他配置保持默认)，点击 `Deploy` 部署 **_([配置文档](./config.md))_**
+1. 在导入界面设置环境变量 (其他配置保持默认)，点击 `Deploy` 部署 **_([配置文档](./config))_**
 
 ![vercel-2](https://ghimg.siiway.top/sleepy/deploy/vercel-2.1.png)
 
