@@ -22,7 +22,7 @@
 
 ## 手动部署
 
-本方式理论上全平台通用, 安装了 Python **3.10+** 即可
+本方式理论上全平台通用, 安装了 Python **3.10+** / **[uv (Python 包管理器)](https://docs.astral.sh/uv/getting-started/installation/)** 即可
 
 > 优点: 数据文件 (`data/data.json`) 可持久化，不会因为重启而被删除
 
@@ -31,22 +31,46 @@
 1. Clone 本仓库 _(也可先 Fork)_
 
 ```shell
-git clone --depth 1 -b main https://github.com/sleepy-project/sleepy.git
+git clone --depth 1 -b v5.3 https://github.com/sleepy-project/sleepy.git
+cd sleepy
 ```
 
-2. 安装依赖
+2. *安装 `uv` (如果已经安装或不想安装可跳过)*
 
 ```shell
-pip install -r requirements.txt
+# Mac / Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-> 推荐使用 `uv` 管理环境:
+```powershell
+# Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+如果机器在中国大陆境内:
+
+```shell
+# Mac / Linux
+UV_INSTALLER_GITHUB_BASE_URL=https://gh-proxy.com/https://github.com curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+```powershell
+# Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "$env:UV_INSTALLER_GITHUB_BASE_URL='https://gh-proxy.com/https://github.com'; irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+> [!TIP]
+> 如果需要换源方面的帮助, 可访问 **[此文章](https://wyf9.top/p/uv-mirror)**; 如换源后还是无法安装依赖可尝试删除 `uv.lock` 后重新 `uv sync` **(注意测试依赖是否兼容)**, 或使用代理.
+
+3. 安装依赖
 
 ```shell
 uv sync
+# 如果没有 uv:
+pip install -r requirements.txt
 ```
 
-3. 编辑配置文件
+4. 编辑配置文件
 
 > _配置文件变化史_ <br/>
 > ~~`data.json`~~ <br/>
@@ -56,22 +80,35 @@ uv sync
 > -> ~~`config.yaml` & 环境变量 & `.env`~~ <br/>
 > -> **环境变量 & `data/.env` & `data/config.yaml` & `data/config.toml` & `data/config.json`**
 
-在 `data` 目录下新建上面几种配置文件中的**一种**，并**按照 [此处](./config) 的说明编辑配置**
+在 **`main.py` 同级目录** 或 **`data` 目录** 下新建上面几种配置文件中的 **一种**，并 **按照 [此处](./config) 的说明编辑配置**
 
 ### 启动
-
-> [!WARNING]
-> **使用宝塔面板 (uwsgi) 等部署时，请确定只为本程序分配了 1 个进程, 如设置多个服务进程可能导致数据不同步!!!**
 
 有两种启动方式:
 
 ```shell
 # 直接启动
-python3 main.py
-# 简易启动器
-python3 start.py
-# 如果使用了 UV 管理环境请将 python3 替换为 uv run
 uv run main.py
+# 简易启动器 (退出时自动重启)
+uv run start.py
+```
+
+如果没有 `uv`:
+
+```shell
+# Mac / Linux
+# 直接启动
+.venv/bin/python3 main.py
+# 简易启动器 (退出时自动重启)
+.venv/bin/python3 start.py
+```
+
+```shell
+# Windows
+# 直接启动
+.venv\Scripts\python.exe main.py
+# 简易启动器 (退出时自动重启)
+.venv\Scripts\python.exe start.py
 ```
 
 默认服务 http 端口: **`9010`**
@@ -85,14 +122,14 @@ uv run main.py
 
 只需三步:
 
-1. 复制 Space `wyf9/sleepy` (**[点击直达](https://huggingface.co/spaces/wyf9/sleepy?duplicate=true&visibility=public)**)
+1. 复制 Space `wyf9/sleepy` (**[点击直达](https://huggingface.co/spaces/wyf9/sleepy?duplicate=true)**)
 
 > 如果没有弹出窗口, 请手动点击右上角三点 -> `Duplicate this Space` (如图)
 
-![huggingface-5](https://ghimg.siiway.top/sleepy/deploy/huggingface-5.1.png)
+![huggingface-5](./deploy/huggingface-5.1.png)
 
-1. 在复制页面设置 secret 和页面信息等环境变量 **([配置说明](./config))**
-2. 点击部署，等待完成后点击右上角三点 -> `Embed this space`，即可获得你的部署地址 _(类似于: <https://wyf9-sleepy.hf.space>)_
+2. 在复制页面设置 secret 和页面信息等环境变量 **([配置说明](./config))**
+3. 点击部署，等待完成后点击右上角三点 -> `Embed this space`，即可获得你的部署地址 _(类似于: <https://wyf9-sleepy.hf.space>)_
 
 > [!IMPORTANT]
 > **在创建时请务必选择 Space 类型为公开 (`Public`)，否则无法获取部署地址 (他人无法访问)!** <br/>
@@ -123,13 +160,13 @@ uv run main.py
 
 随便填一个名字后进入 `安装并运行连接器`，复制 Token:
 
-![huggingface-2](https://ghimg.siiway.top/sleepy/deploy/huggingface-2.1.png)
+![huggingface-2](./deploy/huggingface-2.1.png)
 
 进入 `路由隧道`，按如下图片配置并保存:
 
-![huggingface-3](https://ghimg.siiway.top/sleepy/deploy/huggingface-3.1.png)
+![huggingface-3](./deploy/huggingface-3.1.png)
 
-2. 编辑 Space 的 `Dockerfile`，将底部的 `CMD python3 main.py` 删除，并添加:
+1. 编辑 Space 的 `Dockerfile`，将底部的 `CMD [".venv/bin/python", "main.py"]` 删除，并添加:
 
 ```dockerfile
 # Install wget
@@ -144,12 +181,12 @@ CMD bash cfd.sh
 
 3. 新建两个环境变量 (`Settings` -> `Variables and secrets`):
 
-- `CFD_COMMAND` _(`Variable`)_: `python3 main.py`
+- `CFD_COMMAND` _(`Variable`)_: `.venv/bin/python main.py`
 - `CFD_TOKEN`: 你的 Cloudflare Tunnel 密钥
 
 设置完成后如图:
 
-![huggingface-4](https://ghimg.siiway.top/sleepy/deploy/huggingface-4.1.png)
+![huggingface-4](./deploy/huggingface-4.1.png)
 
 4. 重新构建 Space (`Factory rebuild`) 即可
 
@@ -165,21 +202,21 @@ CMD bash cfd.sh
 2. 打开 [`vercel.com/new`](https://vercel.com/new)，并按照提示授权访问 GitHub _(如未注册则注册)_
 3. 选择你的 Fork，点击 `Import`
 
-![vercel-1](https://ghimg.siiway.top/sleepy/deploy/vercel-1.1.png)
+![vercel-1](./deploy/vercel-1.1.png)
 
-1. 在导入界面设置环境变量 (其他配置保持默认)，点击 `Deploy` 部署 **_([配置文档](./config))_**
+4. 在导入界面设置环境变量 (其他配置保持默认)，点击 `Deploy` 部署 **_([配置文档](./config))_**
 
-![vercel-2](https://ghimg.siiway.top/sleepy/deploy/vercel-2.1.png)
+![vercel-2](./deploy/vercel-2.1.png)
 
 即可完成部署，默认分配 `vercel.app` 域名
 
 5. **_[可选]_** 绑定自定义域名: `Settings` -> `Domains`
 
-![vercel-3](https://ghimg.siiway.top/sleepy/deploy/vercel-3.1.png)
+![vercel-3](./deploy/vercel-3.1.png)
 
 6. **_[可选]_** 添加更多环境变量: `Settings` -> `Environment Variables`
 
-![vercel-4](https://ghimg.siiway.top/sleepy/deploy/vercel-4.1.png)
+![vercel-4](./deploy/vercel-4.1.png)
 
 > 修改环境变量后需重新部署
 
@@ -190,10 +227,11 @@ CMD bash cfd.sh
 1. 克隆本仓库
 
 ```bash
-git clone --depth 1 -b main https://github.com/sleepy-project/sleepy.git ./sleepy
+git clone --depth 1 -b v5.3 https://github.com/sleepy-project/sleepy.git
+cd sleepy
 ```
 
-2. 修改 [`docker-compose.yml`](../docker-compose.yml) 文件中的环境变量等配置
+2. 修改 [`docker-compose.yml`](../docker-compose.yml) 文件中的环境变量等配置 [(参考)](./config)
 
 3. 启动
 
