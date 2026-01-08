@@ -9,6 +9,7 @@ export default defineConfig({
   cleanUrls: true,
   head: [["link", { rel: "icon", href: "/favicon.png" }]],
   lastUpdated: true,
+  ignoreDeadLinks: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [{ text: "主页", link: "/" }],
@@ -16,7 +17,11 @@ export default defineConfig({
     sidebar: {
       ["/v5/"]: [
         { text: "Sleepy v5", link: "/v5/" },
-        // needs more
+        { text: "快速开始", link: "/v5/getting-started" },
+        { text: "配置指南", link: "/v5/configuration" },
+        { text: "部署指南", link: "/v5/deployment" },
+        { text: "插件开发", link: "/v5/plugin-development" },
+        { text: "API 文档", link: "/v5/apis" },
         { text: "GitHub", link: "https://github.com/sleepy-project" },
       ],
       ["/en_us/v5/"]: [
