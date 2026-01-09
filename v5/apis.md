@@ -16,6 +16,7 @@
 ## 核心接口 (Status & Meta)
 
 ### 1. 获取站点元数据
+
 获取站点的基本配置信息、版本号及页面设置。
 
 - **Endpoint**: `/api/meta`
@@ -23,6 +24,7 @@
 - **Auth**: No
 
 **Response Example:**
+
 ```json
 {
   "success": true,
@@ -49,6 +51,7 @@
 ```
 
 ### 2. 获取统计信息
+
 获取访问统计数据（如果开启了 metrics）。
 
 - **Endpoint**: `/api/metrics`
@@ -56,6 +59,7 @@
 - **Auth**: No
 
 **Response Example:**
+
 ```json
 {
   "success": true,
@@ -68,6 +72,7 @@
 ```
 
 ### 3. 查询当前状态
+
 获取当前的主状态、设备列表及最后更新时间。
 
 - **Endpoint**: `/api/status/query`
@@ -75,12 +80,14 @@
 - **Auth**: No
 
 **Query Parameters:**
+
 | 参数 | 类型 | 必填 | 描述 |
 | :--- | :--- | :--- | :--- |
 | `meta` | bool | 否 | 设为 `true` 时，响应中将包含 `/api/meta` 的数据 |
 | `metrics` | bool | 否 | 设为 `true` 时，响应中将包含 `/api/metrics` 的数据 |
 
 **Response Example:**
+
 ```json
 {
   "success": true,
@@ -105,6 +112,7 @@
 ```
 
 ### 4. 获取状态列表
+
 获取服务器配置中定义的所有可用状态。
 
 - **Endpoint**: `/api/status/list`
@@ -112,6 +120,7 @@
 - **Auth**: No
 
 **Response Example:**
+
 ```json
 {
   "success": true,
@@ -133,15 +142,17 @@
 ```
 
 ### 5. SSE 事件流
+
 通过 Server-Sent Events (SSE) 实时接收状态更新。
 
 - **Endpoint**: `/api/status/events`
 - **Method**: `GET`
 - **Auth**: No
-- **Headers**: 
-    - `Last-Event-ID`: 上一次接收到的事件 ID (Integer)
+- **Headers**:
+  - `Last-Event-ID`: 上一次接收到的事件 ID (Integer)
 
 **Events:**
+
 - `update`: 数据有更新，payload 为 `/api/status/query` 的 JSON 数据。
 - `heartbeat`: 心跳包（每 30 秒），无 payload。
 
@@ -152,6 +163,7 @@
 > ⚠️ 以下接口均需要鉴权 (Secret)。
 
 ### 1. 设置主状态
+
 手动设置当前的用户状态 ID。
 
 - **Endpoint**: `/api/status/set`
@@ -159,12 +171,14 @@
 - **Auth**: **Yes**
 
 **Query Parameters:**
+
 | 参数 | 类型 | 必填 | 描述 |
 | :--- | :--- | :--- | :--- |
 | `status` | int | **是** | 目标状态 ID |
 | `secret` | string | **是** | 鉴权密钥 |
 
 **Response Example:**
+
 ```json
 {
   "success": true,
@@ -173,6 +187,7 @@
 ```
 
 ### 2. 设置/更新设备状态
+
 添加或更新单个设备的信息。支持 GET 和 POST。
 
 - **Endpoint**: `/api/device/set`
@@ -180,6 +195,7 @@
 - **Auth**: **Yes**
 
 **GET Parameters (Query):**
+
 | 参数 | 类型 | 描述 |
 | :--- | :--- | :--- |
 | `id` | string | 设备唯一标识符 |
@@ -190,6 +206,7 @@
 | `...` | any | 其他参数将作为 `fields` 存储 |
 
 **POST Parameters (JSON Body):**
+
 ```json
 {
   "id": "device_id",
@@ -204,6 +221,7 @@
 ```
 
 **Response Example:**
+
 ```json
 {
   "success": true
@@ -211,6 +229,7 @@
 ```
 
 ### 3. 移除设备
+
 移除指定 ID 的设备状态。
 
 - **Endpoint**: `/api/device/remove`
@@ -218,12 +237,14 @@
 - **Auth**: **Yes**
 
 **Query Parameters:**
+
 | 参数 | 类型 | 必填 | 描述 |
 | :--- | :--- | :--- | :--- |
 | `id` | string | **是** | 设备唯一标识符 |
 | `secret` | string | **是** | 鉴权密钥 |
 
 ### 4. 清除所有设备
+
 清空所有设备列表。
 
 - **Endpoint**: `/api/device/clear`
@@ -231,6 +252,7 @@
 - **Auth**: **Yes**
 
 ### 5. 切换隐私模式
+
 开启或关闭隐私模式（隐私模式下接口不返回设备具体信息）。
 
 - **Endpoint**: `/api/device/private`
@@ -238,12 +260,14 @@
 - **Auth**: **Yes**
 
 **Query Parameters:**
+
 | 参数 | 类型 | 必填 | 描述 |
 | :--- | :--- | :--- | :--- |
 | `private` | bool | **是** | `true` 开启隐私模式，`false` 关闭 |
 | `secret` | string | **是** | 鉴权密钥 |
 
 ### 6. 验证密钥
+
 验证当前提供的 Secret 是否有效。
 
 - **Endpoint**: `/panel/verify`
@@ -251,6 +275,7 @@
 - **Auth**: **Yes**
 
 **Response Example:**
+
 ```json
 {
   "success": true,
@@ -264,6 +289,7 @@
 ## 监控与工具接口
 
 ### 1. 存活检测 (Heartbeat)
+
 返回 204 No Content，用于 Uptime Kuma 等监控工具检测服务是否在线。
 
 - **Endpoint**: `/none`
@@ -271,6 +297,7 @@
 - **Response**: 204 No Content
 
 ### 2. 静态文件
+
 访问 `data/public` 或 `public` 目录下的文件。
 
 - **Endpoint**: `/<filename>`

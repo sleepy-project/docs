@@ -10,6 +10,7 @@ Sleepy Project 提供了一套强大的插件系统，允许开发者扩展路�
 在 `plugins/` 目录下创建一个新文件夹（例如 `my_plugin`），并在其中创建 `__init__.py`。
 
 目录结构：
+
 ```text
 plugins/
 └── my_plugin/
@@ -97,6 +98,7 @@ with plugin.data_context() as data:
 通过 `@plugin.event_handler` 监听系统事件。
 
 **可用事件**:
+
 - `AppInitializedEvent`, `AppStartedEvent`, `AppStoppedEvent`
 - `BeforeRequestHook`, `AfterRequestHook`
 - `StatusUpdatedEvent` (状态改变时)
@@ -104,6 +106,7 @@ with plugin.data_context() as data:
 - `IndexAccessEvent` (主页被访问时，可拦截修改返回内容)
 
 示例：监听状态改变并打印日志
+
 ```python
 import plugin as pl  # 导入事件类
 

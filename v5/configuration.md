@@ -4,6 +4,7 @@
 > 这些文档使用了 AI 帮助撰写，并经过人工审核和修改。请注意甄别内容真实性。
 
 Sleepy Project 支持多种配置方式，加载优先级从高到低依次为：
+
 1. **环境变量** (以 `SLEEPY_` 开头)
 2. `data/config.yaml`
 3. `data/config.toml`
@@ -118,6 +119,7 @@ plugin:
 所有配置项均可通过环境变量覆盖，前缀为 `SLEEPY_`，层级用 `_` 分隔。
 
 **示例：**
+
 - `main.port` -> `SLEEPY_MAIN_PORT=9020`
 - `page.name` -> `SLEEPY_PAGE_NAME=MyName`
 - `status.status_list` (数组类型需传入 JSON 字符串) -> `SLEEPY_STATUS_STATUS_LIST='[{"name":"Busy",...}]'`

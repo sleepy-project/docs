@@ -18,10 +18,8 @@ cd sleepy
 
 ## 2. 安装依赖
 
-请确保你的环境中有 `requirements.txt` (基于源码推断的依赖列表如下)，运行以下命令安装：
-
 ```bash
-uv pip install -r requirements.txt
+uv sync
 ```
 
 ## 3. 首次运行
@@ -45,8 +43,8 @@ uv run main.py
 
 ## 5. 基础设置
 
-1.  在 `data/` 目录下创建一个名为 `config.yaml` 的文件。
-2.  写入以下最基础的配置以修改用户名：
+1. 在 `data/` 目录下创建一个名为 `config.yaml` 的文件。
+2. 写入以下最基础的配置以修改用户名：
 
 ```yaml
 page:
@@ -57,7 +55,7 @@ main:
   secret: "请修改为一个复杂的密码" # 重要：用于更新状态的密钥
 ```
 
-3.  重启程序使配置生效。
+1. 重启程序使配置生效。
 
 ## 6. 更新状态
 
