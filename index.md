@@ -13,6 +13,9 @@ hero:
       text: 文档 (v5)
       link: /v5/
     - theme: alt
+      text: 文档 (v6)
+      link: /v6/
+    - theme: alt
       text: GitHub
       link: https://github.com/sleepy-project
 

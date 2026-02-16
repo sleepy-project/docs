@@ -29,6 +29,11 @@ export default defineConfig({
         // needs more
         { text: "GitHub", link: "https://github.com/sleepy-project" },
       ],
+      ["/v6/"]: [
+        { text: "Sleepy v6", link: "/v6/" },
+        { text: "快速开始", link: "/v6/getting-started" },
+        { text: "配置文件", link: "/v6/configuration" },
+      ]
     },
 
     socialLinks: [
