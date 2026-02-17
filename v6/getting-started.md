@@ -49,10 +49,14 @@ uv run main.py
 
 ### 一键脚本安装
 
+请确保 `jq` 或 `python3` 以及 `bash` 已安装。
+
 运行：
 
 ```bash
 curl -sSL http://getsleepy.siiway.org/v6.sh | bash
+# 如果你想要安装为服务/安装到普通用户不可写入的路径
+curl -sSL http://getsleepy.siiway.org/v6.sh | sudo bash
 ```
 
 此脚本应处理好一切。
