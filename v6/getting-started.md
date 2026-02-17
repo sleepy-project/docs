@@ -49,4 +49,10 @@ uv run main.py
 
 ### 一键脚本安装
 
-TBD.
+运行：
+
+```bash
+curl -sSL http://getsleepy.siiway.org/v6.sh | bash
+```
+
+此脚本应处理好一切。
