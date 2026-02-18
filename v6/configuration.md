@@ -25,3 +25,66 @@ ws_refresh_interval = 10
 ```
 
 将以上样例放到 `config.toml` 并按需修改。
+
+## 插件配置
+
+插件可以注册自己的配置项。插件的配置统一写在主配置文件的 `plugin.<插件id>` 下。
+
+### 配置文件写法
+
+**TOML** (`config.toml`)：
+
+```toml
+[plugin.my-plugin]
+some_option = "value"
+timeout = 30
+
+[plugin.another-plugin]
+enabled = true
+```
+
+**YAML** (`config.yaml`)：
+
+```yaml
+plugin:
+  my-plugin:
+    some_option: value
+    timeout: 30
+```
+
+**JSON** (`config.json`)：
+
+```json
+{
+  "plugin": {
+    "my-plugin": {
+      "some_option": "value",
+      "timeout": 30
+    }
+  }
+}
+```
+
+### 环境变量写法
+
+格式为 `SLEEPY_PLUGIN_<插件ID>_<配置项>=值`，其中插件 ID 为文件夹名全大写并将连字符替换为下划线。
+
+```
+SLEEPY_PLUGIN_MY_PLUGIN_SOME_OPTION=value
+SLEEPY_PLUGIN_MY_PLUGIN_TIMEOUT=30
+```
+
+嵌套配置项用下划线继续分隔：
+
+```
+# 对应 { "log": { "level": "DEBUG" } }
+SLEEPY_PLUGIN_MY_PLUGIN_LOG_LEVEL=DEBUG
+```
+
+环境变量的优先级高于配置文件。
+
+### 优先级顺序
+
+```
+环境变量 > config.yaml > config.toml > config.json
+```

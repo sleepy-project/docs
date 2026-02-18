@@ -17,3 +17,6 @@
 /t/bug https://github.com/wyf9/sleepy/issues/new?template=1-bug-report.yml
 /t/feature https://github.com/wyf9/sleepy/issues/new?template=2-feature-request.yml
 /t/security https://github.com/wyf9/sleepy/security/policy
+
+# Install Script
+/v6/get https://getsleepy.siiway.org/v6.sh
