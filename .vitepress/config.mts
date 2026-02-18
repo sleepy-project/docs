@@ -33,6 +33,7 @@ export default defineConfig({
         { text: "Sleepy v6", link: "/v6/" },
         { text: "快速开始", link: "/v6/getting-started" },
         { text: "配置文件", link: "/v6/configuration" },
+        { text: "插件开发", link: "/v6/plugin-development"}
       ]
     },
 
