@@ -19,7 +19,6 @@ database = "sqlite:///data.db"
 ping_interval = 20
 auth_access_token_expires_minutes = 60
 auth_refresh_token_expires_days = 30
-device_token_expires_days = 365
 
 ws_refresh_interval = 10
 ```
@@ -87,4 +86,28 @@ SLEEPY_PLUGIN_MY_PLUGIN_LOG_LEVEL=DEBUG
 
 ```
 环境变量 > config.yaml > config.toml > config.json
+```
+
+## 内置插件配置参考
+
+### device-auth
+
+设备鉴权插件。配置项写在 `[plugin.device-auth]` 下。
+
+| 配置项 | 类型 | 默认值 | 说明 |
+|---|---|---|---|
+| `access_token_expires_minutes` | int | `60` | 设备 Access Token 过期时间（分钟） |
+| `refresh_token_expires_days` | int | `30` | 设备 Refresh Token 过期时间（天） |
+
+```toml
+[plugin.device-auth]
+access_token_expires_minutes = 60
+refresh_token_expires_days = 30
+```
+
+环境变量写法：
+
+```
+SLEEPY_PLUGIN_DEVICE_AUTH_ACCESS_TOKEN_EXPIRES_MINUTES=60
+SLEEPY_PLUGIN_DEVICE_AUTH_REFRESH_TOKEN_EXPIRES_DAYS=30
 ```
