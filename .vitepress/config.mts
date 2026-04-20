@@ -54,6 +54,7 @@ export default defineConfig({
       formatOptions: {
         dateStyle: "full",
         timeStyle: "full",
+        forceLocale: true,
       },
     },
   },
@@ -87,9 +88,10 @@ export default defineConfig({
 
         lastUpdated: {
           text: "Last updated at",
-          formatOptions: {
-            dateStyle: "full",
-            timeStyle: "full",
+          formatOptions: {                      
+            dateStyle: 'full',
+            timeStyle: 'medium',
+            forceLocale: true,
           },
         },
       },
