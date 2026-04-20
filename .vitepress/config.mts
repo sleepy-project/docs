@@ -57,11 +57,10 @@ export default defineConfig({
         forceLocale: true,
       },
     },
-  },
 
     // 搜索功能 https://vitepress.dev/zh/reference/default-theme-search
     search: {
-      provider: 'local'
+      provider: 'local',
       options: {
         locales: {
           root: { // 如果你想翻译默认语言，请将此处设为 `root`
@@ -83,13 +82,14 @@ export default defineConfig({
                   navigateDownKeyAriaLabel: '下箭头',
                   closeText: '关闭',
                   closeKeyAriaLabel: 'Esc'
-                    }
-                  }
-                }
+                 }
               }
             }
           }
-        },
+        }
+      }
+    }
+  }, // themeConfig 结束（GEMINI之帮助）
 
 
 
