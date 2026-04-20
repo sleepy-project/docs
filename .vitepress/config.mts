@@ -73,7 +73,7 @@ export default defineConfig({
                 displayDetails: '显示详细列表',
                 resetButtonTitle: '重置搜索',
                 backButtonTitle: '关闭搜索',
-                noResultsText: '无结果',
+                noResultsText: '没有结果',
                 footer: {
                   selectText: '选择',
                   selectKeyAriaLabel: '输入',
