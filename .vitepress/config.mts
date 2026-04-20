@@ -54,9 +54,44 @@ export default defineConfig({
       formatOptions: {
         dateStyle: "full",
         timeStyle: "full",
+        forceLocale: true,
       },
     },
-  },
+
+    // 搜索功能 https://vitepress.dev/zh/reference/default-theme-search
+    search: {
+      provider: 'local',
+      options: {
+        locales: {
+          root: { // 如果你想翻译默认语言，请将此处设为 `root`
+            translations: {
+              button: {
+                buttonText: '搜索',
+                buttonAriaLabel: '搜索'
+              },
+              modal: {
+                displayDetails: '显示详细列表',
+                resetButtonTitle: '重置搜索',
+                backButtonTitle: '关闭搜索',
+                noResultsText: '没有结果',
+                footer: {
+                  selectText: '选择',
+                  selectKeyAriaLabel: '输入',
+                  navigateText: '导航',
+                  navigateUpKeyAriaLabel: '上箭头',
+                  navigateDownKeyAriaLabel: '下箭头',
+                  closeText: '关闭',
+                  closeKeyAriaLabel: 'Esc'
+                 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }, // themeConfig 结束（GEMINI之帮助）
+
+
 
   locales: {
     root: {
@@ -87,9 +122,10 @@ export default defineConfig({
 
         lastUpdated: {
           text: "Last updated at",
-          formatOptions: {
-            dateStyle: "full",
-            timeStyle: "full",
+          formatOptions: {                      
+            dateStyle: 'full',
+            timeStyle: 'medium',
+            forceLocale: true,
           },
         },
       },
