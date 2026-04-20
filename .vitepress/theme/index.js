@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
-import MyLayout from '/Layout.vue' // 导入你刚创建的 Layout.vue
+import MyLayout from '../Layout.vue' // 导入你刚创建的 Layout.vue
 
 export default {
   extends: DefaultTheme,
